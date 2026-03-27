@@ -1,6 +1,7 @@
 FILE_TEST_MAP = {
     "login.py": ["test_login.py"],
-    "payment.py": ["test_payment.py"]
+    "payment.py": ["test_payment.py"],
+    "booking.py": ["test_booking.py"]
 }
 
 def get_impacted_tests(changed_files):
