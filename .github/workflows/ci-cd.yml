@@ -35,10 +35,6 @@ jobs:
     - name: Run Impacted Tests Only
       run: python src/scripts/run_tests.py
 
-    # Optional Docker build
-    - name: Build Docker Image
-      run: docker build -t test-impact-analyzer .
-
     # Final message
     - name: Pipeline Success
       run: echo "CI/CD Pipeline executed successfully!"
