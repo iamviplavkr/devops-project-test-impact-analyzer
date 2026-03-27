@@ -20,8 +20,12 @@ changed_files = get_changed_files()
 print("Changed Files:", changed_files)
 
 tests = get_impacted_tests(changed_files)
-
 print("Impacted Tests:", tests)
+
+# ✅ HANDLE EMPTY CASE
+if not tests:
+    print("No impacted tests. Skipping execution.")
+    exit(0)
 
 for test in tests:
     subprocess.run([sys.executable, "-m", "pytest", f"tests/unit/{test}"])
