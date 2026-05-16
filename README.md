@@ -1,87 +1,234 @@
-# 🚀 Test Impact Analyzer  
-### Analyze which tests are impacted by code changes
+# Test Impact Analyzer with CI/CD Integration
+
+## Project Overview
+
+Test Impact Analyzer is a DevOps-based automation project that detects changed source files using Git and executes only the impacted test cases instead of running the complete test suite. This helps reduce testing time and improves CI/CD pipeline efficiency.
+
+The project is built using Python, Flask, Pytest, Git, and GitHub Actions.
 
 ---
 
-## 👨‍💻 Student Details
-- **Name:** Viplav Kumar  
-- **Registration No:** 23FE10CSE00421  
-- **Course:** CSE3253 DevOps [PE6]  
-- **Semester:** VI (2025–2026)  
-- **Project Type:** Testing  
-- **Difficulty:** Intermediate  
+# Features
+
+- Detects changed files automatically using Git
+- Maps source files to corresponding test cases
+- Executes only impacted tests
+- Automated testing using Pytest
+- CI/CD integration using GitHub Actions
+- Modular and scalable architecture
 
 ---
 
-## 📌 Project Overview
+# Tech Stack
 
-### ❓ Problem Statement
-In modern software systems, running the entire test suite after every code change is inefficient, time-consuming, and costly. Even small changes trigger unnecessary execution of unrelated tests.
-
----
-
-### 💡 Solution
-This project implements a **Test Impact Analyzer**, which identifies and executes only those test cases that are affected by recent code changes.
-
----
-
-## 🎯 Objectives
-
-- Identify impacted test cases based on code changes  
-- Reduce test execution time  
-- Improve CI/CD pipeline efficiency  
-- Automate selective test execution  
+| Technology | Purpose |
+|------------|---------|
+| Python | Core programming language |
+| Flask | REST API development |
+| Pytest | Automated testing |
+| Git | Change detection |
+| GitHub Actions | CI/CD pipeline |
 
 ---
 
-## ✨ Key Features
+# Project Structure
 
-- 🔍 Detect changed source files  
-- 🧠 Map source files to corresponding test cases  
-- ⚡ Execute only impacted tests  
-- 🌐 REST API for analysis  
-- 🔄 CI/CD integration using GitHub Actions  
-
----
-
-## ⚙️ Technology Stack
-
-### 🧩 Core Technologies
-- **Language:** Python  
-- **Framework:** Flask  
-- **Testing:** Pytest  
-
-### 🔧 DevOps Tools
-- **Version Control:** Git, GitHub  
-- **CI/CD:** GitHub Actions    
-
----
-
-## 🧠 How It Works
-
-### 🔄 Workflow
-
-1. Developer makes changes in code  
-2. Changed files are detected  
-3. Analyzer maps changed files to test cases  
-4. Only impacted tests are selected  
-5. Selected tests are executed  
-6. Faster CI/CD pipeline  
+```plaintext
+DEVOPS-PROJECT-TEST-IMPACT-ANALYZER/
+│
+├── .github/
+│   └── workflows/
+│       └── ci-cd.yml
+│
+├── src/
+│   ├── main/
+│   │   ├── analyzer.py
+│   │   ├── app.py
+│   │   ├── login.py
+│   │   ├── payment.py
+│   │   └── booking.py
+│   │
+│   └── scripts/
+│       └── run_tests.py
+│
+├── tests/
+│   └── unit/
+│       ├── test_login.py
+│       ├── test_payment.py
+│       └── test_booking.py
+│
+├── requirements.txt
+└── README.md
+```
 
 ---
 
-### 📊 Flow Diagram
+# Workflow
 
-Code Change → Detect Files → Analyzer → Impacted Tests → Execute Tests → Faster Pipeline
-
+1. Developer modifies source code files
+2. Git detects changed files using `git diff`
+3. Analyzer identifies impacted test cases
+4. Only impacted tests are executed
+5. GitHub Actions automates the CI/CD pipeline
 
 ---
 
-## 🧪 Example
+# Setup Instructions
 
-### Input
+## 1. Clone Repository
+
+```bash
+git clone https://github.com/iamviplavkr/devops-project-test-impact-analyzer.git
+cd devops-project-test-impact-analyzer
+```
+
+---
+
+## 2. Install Dependencies
+
+```bash
+python -m pip install -r requirements.txt
+```
+
+---
+
+## 3. Run Flask Application
+
+```bash
+python src/main/app.py
+```
+
+Application runs on:
+
+```plaintext
+http://127.0.0.1:8080
+```
+
+---
+
+## 4. Run Test Impact Analyzer
+
+```bash
+python src/scripts/run_tests.py
+```
+
+---
+
+# API Endpoint
+
+## Analyze Changed Files
+
+### Endpoint
+
+```plaintext
+POST /analyze
+```
+
+### Sample Request
+
 ```json
 {
   "files": ["login.py"]
 }
+```
+
+### Sample Response
+
+```json
+{
+  "status": "success",
+  "changed_files": ["login.py"],
+  "impacted_tests": ["test_login.py"],
+  "count": 1
+}
+```
+
+---
+
+# Core Modules
+
+## analyzer.py
+
+Maintains mapping between source files and test files.
+
+Example:
+
+```python
+FILE_TEST_MAP = {
+    "login.py": ["test_login.py"],
+    "payment.py": ["test_payment.py"],
+    "booking.py": ["test_booking.py"]
+}
+```
+
+---
+
+## run_tests.py
+
+- Detects changed files using Git
+- Identifies impacted tests
+- Executes impacted tests using Pytest
+
+---
+
+# CI/CD Pipeline
+
+GitHub Actions workflow automates:
+
+- Dependency installation
+- Test execution
+- Impact analysis execution
+
+Workflow file:
+
+```plaintext
+.github/workflows/ci-cd.yml
+```
+
+---
+
+# Sample Output
+
+```plaintext
+Changed Files: ['login.py']
+Impacted Tests: ['test_login.py']
+
+================= test session starts =================
+1 passed
+```
+
+---
+
+# Advantages
+
+- Reduces unnecessary test execution
+- Improves CI/CD efficiency
+- Faster feedback for developers
+- Scalable for large applications
+
+---
+
+# Future Enhancements
+
+- AI-based dependency analysis
+- Parallel test execution
+- Docker integration
+- Dashboard for visualization
+- Database-based test mapping
+
+---
+
+# Author
+
+**Viplav Kumar**  
+B.Tech CSE, Manipal University Jaipur
+
+GitHub: https://github.com/iamviplavkr
+LinkedIn: https://www.linkedin.com/in/viplav-kumar/
+
+---
+
+# Conclusion
+
+This project demonstrates practical DevOps concepts including Git-based change detection, selective test execution, CI/CD automation, and test optimization. It showcases how intelligent testing strategies can improve software delivery efficiency in real-world development environments.
 
